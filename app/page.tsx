@@ -178,22 +178,25 @@ export default function HomePage() {
             className="mb-12"
           />
           <div className="flex flex-wrap items-center justify-center gap-6">
-            <Reveal>
-              <div className="flex h-64 w-56 flex-col items-center justify-center rounded-lg border border-border bg-surface/70 px-6 py-6 text-center">
-                <div className="flex h-36 w-36 items-center justify-center">
-                  <Image src="/assets/1000328394.jpg" alt="ISO 27001 Certified" width={136} height={136} className="h-full w-full object-contain" />
+            {[
+              { src: '/assets/1000328394.jpg', alt: 'ISO 27001 Certified', label: 'Information Security' },
+              { src: '/assets/21972-312_SOC_NonCPA.png', alt: 'SOC 2 Type II', label: 'Security & Availability' },
+            ].map((cert, i) => (
+              <Reveal key={cert.label} delay={i * 80}>
+                <div className="flex h-64 w-60 flex-col items-center justify-between rounded-lg border border-border bg-surface/70 px-6 py-8 text-center">
+                  <div className="flex h-40 w-full items-center justify-center">
+                    <Image
+                      src={cert.src}
+                      alt={cert.alt}
+                      width={150}
+                      height={150}
+                      className="max-h-full max-w-full object-contain"
+                    />
+                  </div>
+                  <p className="text-sm font-semibold text-muted">{cert.label}</p>
                 </div>
-                <p className="mt-4 text-sm font-semibold text-muted">Information Security</p>
-              </div>
-            </Reveal>
-            <Reveal delay={80}>
-              <div className="flex h-64 w-56 flex-col items-center justify-center rounded-lg border border-border bg-surface/70 px-6 py-6 text-center">
-                <div className="flex h-36 w-36 items-center justify-center">
-                  <Image src="/assets/21972-312_SOC_NonCPA.png" alt="SOC 2 Type II" width={136} height={136} className="h-full w-full object-contain" />
-                </div>
-                <p className="mt-4 text-sm font-semibold text-muted">Security &amp; Availability</p>
-              </div>
-            </Reveal>
+              </Reveal>
+            ))}
           </div>
         </Container>
       </Section>

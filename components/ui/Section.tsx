@@ -65,7 +65,7 @@ export function SectionHeading({
     >
       {eyebrow && <Eyebrow>{eyebrow}</Eyebrow>}
       <h2 className="font-black tracking-tightish text-bright">{title}</h2>
-      {intro && <p className="subtitle mt-5">{intro}</p>}
+      {intro && <p className={clsx('subtitle mt-5', align === 'center' && 'mx-auto text-center')}>{intro}</p>}
     </div>
   );
 }
