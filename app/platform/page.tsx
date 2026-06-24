@@ -50,7 +50,16 @@ export default function PlatformPage() {
                       <p className="mt-2 text-sm text-secondary">{p.positioning}</p>
                     </div>
                   </div>
-                  <p className="mt-4 flex-1 text-body leading-relaxed">{p.meta.description}</p>
+                  <p className="mt-4 flex-1 text-sm leading-relaxed text-body">{p.cardSummary ?? p.meta.description}</p>
+                  {p.cardTags && (
+                    <div className="mt-3 flex flex-wrap gap-1.5">
+                      {p.cardTags.map((tag) => (
+                        <span key={tag} className="rounded-full border border-secondary/30 bg-gradient-brand-soft px-2.5 py-0.5 text-xs font-medium text-secondary">
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  )}
                   <div className="mt-5 flex items-center justify-between">
                     <Badge tone="muted">Pillar · {p.pillar}</Badge>
                     <span className="inline-flex items-center gap-1.5 text-sm font-bold text-secondary group-hover:text-bright">

@@ -28,6 +28,8 @@ export type ProductContent = {
     intro: string;
     points: { title: string; description: string }[];
   };
+  cardSummary?: string;
+  cardTags?: string[];
   stats: { eyebrow?: string; heading?: string; items: Stat[] };
   features: { eyebrow: string; heading: string; intro?: string; items: Feature[] };
   workflow?: { eyebrow: string; heading: string; intro?: string; steps: Step[] };
