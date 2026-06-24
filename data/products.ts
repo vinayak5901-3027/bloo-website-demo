@@ -2,7 +2,7 @@ import type { ProductContent } from './types';
 
 /**
  * Platform product content. Each object fully drives its /platform/[slug] page.
- * Sourced from the Bloo SIEM, On-Prem SIEM, SynthAI and Crucible datasheets and
+ * Sourced from the Bloo SIEM, Bare Metal SIEM, SynthAI and Crucible datasheets and
  * the Bloo Brand Book. Edit copy here  -  pages re-render automatically.
  */
 
@@ -51,6 +51,7 @@ export const products: ProductContent[] = [
         { icon: 'clock', title: 'Long-term hot retention', description: 'Keep 1–5 years of full-fidelity history hot and searchable, which means threat hunting and audits run against complete truth.' },
         { icon: 'scale', title: 'Predictable economics', description: 'Costs scale with time rather than ingestion volume, which means complete logging never triggers a surprise bill.' },
         { icon: 'cloud', title: 'Your cloud, your data', description: 'Runs entirely inside the customer environment, which means sovereignty and governance stay with you  -  not a vendor.' },
+        { icon: 'brain', title: 'Memory & Intelligence Layer', description: 'Datafabric acts as both the memory layer — retaining full-fidelity telemetry over years — and the intelligence layer, continuously structuring and enriching data so autonomous agents and analysts reason from ground truth, not reconstructed guesses.' },
       ],
     },
     workflow: {
@@ -98,11 +99,11 @@ export const products: ProductContent[] = [
     slug: 'bloo-vantage',
     name: 'Bloo Vantage',
     eyebrow: 'BLOO VANTAGE · UNIFIED THREAT DETECTION',
-    positioning: 'Cloud (SaaS) / Self-hosted',
+    positioning: 'SecOps Platform',
     hero: {
       headline: 'Unified threat detection across every layer of',
       headlineEmphasis: 'the enterprise.',
-      sub: 'Four detection engines. One data fabric. No gaps. Bloo Vantage brings SIEM, UEBA, NBAD, and EPM under a single operational roof  -  so the investigation that used to require four specialists and a bridge call surfaces as a single correlated signal, already assembled.',
+      sub: 'Four detection engines. One data fabric. No gaps. Bloo Vantage brings SIEM, UEBA, and EPM under a single operational roof  -  so the investigation that used to require four specialists and a bridge call surfaces as a single correlated signal, already assembled.',
     },
     problem: {
       eyebrow: 'WHERE SOCS BREAK',
@@ -121,19 +122,18 @@ export const products: ProductContent[] = [
       items: [
         { value: '600+', label: 'Active detection workbooks', sub: 'Real-time streaming, continuously updated with the threat landscape' },
         { value: '98.4%', label: 'Data compression', sub: 'vs. 55% industry average  -  63 nodes where competitors need 530' },
-        { value: '7-Day', label: 'Rolling baseline window', sub: 'UEBA & NBAD baselines retrain continuously  -  persistent drift becomes the new normal' },
+        { value: '7-Day', label: 'UEBA rolling baseline', sub: 'UEBA baselines retrain continuously on a seven-day window  -  persistent drift becomes the new normal' },
         { value: '365 Days', label: 'Hot retention', sub: 'Full-fidelity, queryable in real time  -  no tiered storage gymnastics', tone: 'accent' },
       ],
     },
     features: {
       eyebrow: 'FOUR DETECTION ENGINES',
-      heading: 'SIEM, UEBA, NBAD, and EPM on one data fabric',
-      intro: 'All four engines draw from and write back to Bloo Datafabric  -  all logs, all flows, all endpoint telemetry, IoT events, cloud telemetry.',
+      heading: 'SIEM, UEBA, Endpoint Telemetry and ML Models on one data fabric',
+      intro: 'All engines draw from and write back to Bloo Datafabric  -  all logs, endpoint telemetry, ML models and cloud events.',
       items: [
         { icon: 'shield', title: 'SIEM - Log-Based Detection at Scale', description: '600+ active detection workbooks in real-time streaming. Uncapped flat-fee licensing with a 14% year-on-year cap. Non-index-based retention in S3  -  keep a year, query a year. No index management, no tiered storage.' },
         { icon: 'brain', title: 'UEBA - Behavioral Baselines', description: 'ML anomaly detection across users, hosts, applications, IPs and every entity. Two model families: Time-Series (Prophet, hourly forecasting) and Unsupervised (Isolation Forest, per-population outlier). Rolling seven-day baseline retraining.' },
-        { icon: 'network', title: 'NBAD - Network Behavior Anomaly Detection', description: 'Isolation Forest detection at the packet layer across 29 features per NetFlow record. Progressive model promotion from 10-min to 1-month horizon  -  noise floor drops with each tier, highest-confidence model is always live.' },
-        { icon: 'server', title: 'EPM - Endpoint Protection Management', description: 'Lightweight osquery-based agent for Linux and Windows. Continuous interval-based collection: process events, network events, file activity, installed packages, user sessions. Live Response and YARA rule execution on demand.' },
+{ icon: 'server', title: 'EPM - Endpoint Protection Management', description: 'Lightweight osquery-based agent for Linux and Windows. Continuous interval-based collection: process events, network events, file activity, installed packages, user sessions. Live Response and YARA rule execution on demand.' },
         { icon: 'bot', title: 'B Copilot - Embedded AI Assistant', description: 'Available platform-wide as a full-page interface and as a side panel within signals, workbooks, baselines and model pages. Understands the data schema, entity model, osquery framework and Bloo documentation  -  analysts work in natural language.' },
         { icon: 'activity', title: 'Signal Management & MITRE Coverage', description: 'A single unified queue for signals from all four engines. Cross-source view with SIEM, UEBA and NBAD volumes side-by-side. Platform-computed Mean Time to Triage / Remediate. Full ATT&CK framework with workbook coverage per tactic and technique.' },
       ],
@@ -154,17 +154,16 @@ export const products: ProductContent[] = [
       eyebrow: 'CAPABILITY INDEX',
       heading: 'What Bloo Vantage ships with',
       rows: [
-        { capability: 'Detection engines', description: 'SIEM, UEBA (Beta), NBAD (Beta), EPM (Beta)  -  all drawing from and writing back to Bloo Datafabric.' },
+        { capability: 'Detection engines', description: 'SIEM, UEBA, EPM  -  all drawing from and writing back to Bloo Datafabric. Endpoint Telemetry and ML Models integrated.' },
         { capability: 'Detection content', description: '600+ active detection workbooks in real-time streaming, updated continuously with the threat landscape.' },
         { capability: 'Data compression', description: '98.4% vs. 55% industry average. A deployment that would have needed 530 nodes runs on 63.' },
         { capability: 'Retention', description: '365 days hot retention, non-index-based. Stored in S3 and queried directly  -  no index management, no tiered storage.' },
         { capability: 'Licensing', description: 'Uncapped flat-fee with a 14% year-on-year cap. Ingest 2 TB/day at year two  -  the cost does not change.' },
         { capability: 'UEBA models', description: 'Time-Series (Prophet, 1-day hourly forecasting) and Unsupervised (Isolation Forest, 1-hour per-population outlier). Baselines: normal behavior, rare behavior (DBSCAN), peer-group comparison, entity baselines.' },
-        { capability: 'NBAD models', description: 'Isolation Forest across 29 NetFlow features. Progressive model promotion: Base 10 min → 30 min → 1 hr → 1 day → 15 days → 1 month.' },
-        { capability: 'EPM collection', description: 'Process events, network events, file activity, installed packages, user sessions. Online/offline heartbeat every 5 seconds. Token-based fleet enrollment via Ansible.' },
+{ capability: 'EPM collection', description: 'Process events, network events, file activity, installed packages, user sessions. Online/offline heartbeat every 5 seconds. Token-based fleet enrollment via Ansible.' },
         { capability: 'Analytics', description: 'Python blocks · BQL for high-speed search and correlation · AI Blocks for no-code ML and outlier detection · Visual search via UI console.' },
         { capability: 'Log & telemetry sources', description: 'NetFlow V1/V5/V10, IPFIX, sFlow, Syslog, Zeek/Suricata, AWS CloudTrail, Azure Activity, GCP Audit, Okta (roadmap), Microsoft Entra (roadmap), Linux & Windows EPM, IoT Syslog, any timestamped log.' },
-        { capability: 'Deployment', description: 'Self-hosted on bare metal (core servers, not virtualized) or customer-managed cloud: AWS, Azure, GCP. SaaS available where on-premises constraints do not apply.' },
+        { capability: 'Deployment', description: 'Self-hosted on Bare Metal (core servers, not virtualized) or customer-managed cloud: AWS, Azure, GCP. SaaS available for environments without Bare Metal constraints.' },
         { capability: 'MITRE ATT&CK', description: 'Full ATT&CK framework rendered with workbook coverage per tactic and technique, and last-signal timestamps  -  evidence a CISO can cite without pulling a separate report.' },
       ],
     },
@@ -175,7 +174,7 @@ export const products: ProductContent[] = [
         'Four detection engines on one data fabric  -  no gaps, no stitching',
         '98.4% data compression  -  63 nodes where competitors need 530',
         'Uncapped flat-fee licensing with a 14% year-on-year cap',
-        'Seven-day rolling baseline window for UEBA and NBAD',
+        'Seven-day rolling baseline window for UEBA',
         'Live endpoint response and YARA scanning via EPM',
         'B Copilot embedded throughout  -  analysts work in natural language',
         'MITRE ATT&CK coverage with last-signal timestamps',
@@ -183,38 +182,37 @@ export const products: ProductContent[] = [
       ],
     },
     faqs: [
-      { q: 'What are the four detection engines in Bloo Vantage?', a: 'SIEM (log-based detection), UEBA (user and entity behavioral baselines), NBAD (network behavior anomaly detection at the packet layer), and EPM (endpoint protection management via lightweight osquery agent). All four engines draw from and write back to Bloo Datafabric.' },
+      { q: 'What are the four detection engines in Bloo Vantage?', a: 'SIEM (log-based detection), UEBA (user and entity behavioral baselines), and EPM (endpoint protection management via lightweight osquery agent). All engines draw from and write back to Bloo Datafabric.' },
       { q: 'How does UEBA differ from SIEM detection?', a: 'SIEM detects against known workbooks and rules applied to log data. UEBA applies ML to behavioral baselines for every user and entity  -  separating persistent change (new normal) from transient drift (credential theft). Baselines retrain on a rolling seven-day window.' },
-      { q: 'Why does NBAD matter if we already have a SIEM?', a: 'Your SIEM is only as intelligent as your devices are. If a device did not recognize an event, it did not emit a log. NBAD monitors unconditionally at the packet layer  -  volume, flow direction, port distribution, and ASN across every hop  -  closing the gap where logs are silent.' },
-      { q: 'How does the flat-fee licensing work?', a: 'Bloo uses an uncapped flat annual fee with a 14% year-on-year cap. Ingest 2 TB/day at year two and the cost does not change. Finance gets complete predictability; infrastructure has no incentive to suppress data collection.' },
-      { q: 'What deployment options are available?', a: 'Self-hosted on bare metal (core servers required, not virtualized) or customer-managed cloud on AWS, Azure, or GCP. SaaS is also available for environments where on-premises constraints do not apply.' },
+{ q: 'How does the flat-fee licensing work?', a: 'Bloo uses an uncapped flat annual fee with a 14% year-on-year cap. Ingest 2 TB/day at year two and the cost does not change. Finance gets complete predictability; infrastructure has no incentive to suppress data collection.' },
+      { q: 'What deployment options are available?', a: 'Self-hosted on Bare Metal (core servers required, not virtualized) or customer-managed cloud on AWS, Azure, or GCP. SaaS is also available for environments without Bare Metal constraints.' },
       { q: 'What is EPM Live Response?', a: 'Live Response sends queries directly to the osquery agent on any enrolled, online endpoint and returns results in near-real-time. B Copilot understands the osquery schema natively  -  analysts work in natural language without knowing table names or column structure.' },
     ],
     related: ['datafabric', 'synthai', 'crucible'],
     meta: {
-      title: 'Bloo Vantage | Unified Threat Detection  -  SIEM, UEBA, NBAD, EPM',
-      description: 'Bloo Vantage unifies four detection engines  -  SIEM, UEBA, NBAD, and EPM  -  on one data fabric. 600+ workbooks, 98.4% compression, 365-day hot retention.',
-      keyword: 'unified threat detection SIEM UEBA NBAD EPM',
+      title: 'Bloo Vantage | Unified Threat Detection  -  SIEM, UEBA, EPM',
+      description: 'Bloo Vantage unifies detection engines  -  SIEM, UEBA, and EPM  -  on one data fabric with Endpoint Telemetry and ML Models. 600+ workbooks, 98.4% compression, 365-day hot retention.',
+      keyword: 'unified threat detection SIEM UEBA EPM endpoint telemetry',
     },
     pillar: 'Reasoning',
   },
 
-  // ─────────────────────────────────────────────────────── On-Prem SIEM
+  // ─────────────────────────────────────────────────────── Bare Metal SIEM
   {
     slug: 'bloo-onprem-siem',
-    name: 'Bloo On-Prem SIEM',
-    eyebrow: 'BLOO ON-PREM SIEM · SOVEREIGN',
+    name: 'Bloo Bare Metal SIEM',
+    eyebrow: 'BLOO BARE METAL SIEM · SOVEREIGN',
     positioning: 'Sovereign by construction',
     hero: {
-      headline: 'On-premise SIEM,',
+      headline: 'Bare Metal SIEM,',
       headlineEmphasis: 'sovereign by construction.',
-      sub: 'Bloo On-Prem SIEM keeps the entire detection pipeline inside your own bare metal  -  collecting events, transforming machine data into threat indicators, and acting on them, end to end. No data forwarded.',
+      sub: 'Bloo Bare Metal SIEM keeps the entire detection pipeline inside your own bare metal  -  collecting events, transforming machine data into threat indicators, and acting on them, end to end. No data forwarded.',
     },
     problem: {
       eyebrow: 'THE CASE FOR SOVEREIGNTY',
       heading: 'Some data can never leave your walls',
       intro:
-        'For regulated, sovereign and air-gapped environments, the central component of the SOC must run where the data lives. Bloo On-Prem delivers a full SIEM, user analytics and automation as one integrated platform you operate yourself.',
+        'For regulated, sovereign and air-gapped environments, the central component of the SOC must run where the data lives. Bloo Bare Metal delivers a full SIEM, user analytics and automation as one integrated platform you operate yourself.',
       points: [
         { title: 'Memory before motion', description: 'Detection is only as good as the history it runs against  -  keep full-fidelity history on-site instead of discarding it to control cost.' },
         { title: 'No data forwarded', description: 'The pipeline runs entirely in your bare metal, which means no telemetry is sent to a vendor cloud or tenant.' },
@@ -236,7 +234,7 @@ export const products: ProductContent[] = [
       eyebrow: "WHAT'S IN THE PLATFORM",
       heading: 'One datalake, three capabilities, your bare metal',
       items: [
-        { icon: 'server', title: 'Integrated datalake', description: 'SIEM, user analytics and automation on one on-premise datalake, which means no stitching together separate tools.' },
+        { icon: 'server', title: 'Integrated datalake', description: 'SIEM, user analytics and automation on one Bare Metal datalake, which means no stitching together separate tools.' },
         { icon: 'database', title: 'Up to 98% compression', description: 'Stream compression stores far more data on the same disk, which means longer retention without new hardware.' },
         { icon: 'activity', title: 'Real-time in-stream detection', description: 'Threats are detected on in-stream analytics as events arrive, which means faster time-to-detect on-site.' },
         { icon: 'brain', title: 'No-code ML & outlier detection', description: 'Build models and find anomalies without a data-science team, which means analytics scale with your existing staff.' },
@@ -246,9 +244,9 @@ export const products: ProductContent[] = [
     },
     capabilities: {
       eyebrow: 'CAPABILITY INDEX',
-      heading: 'What Bloo On-Prem SIEM ships with',
+      heading: 'What Bloo Bare Metal SIEM ships with',
       rows: [
-        { capability: 'Product', description: 'SIEM, user analytics, automation and an on-premise datalake  -  one integrated platform.' },
+        { capability: 'Product', description: 'SIEM, user analytics, automation and a Bare Metal datalake  -  one integrated platform.' },
         { capability: 'Compression', description: 'Up to 98% compression for dramatically reduced TCO on the same disk footprint.' },
         { capability: 'Primary use case', description: 'Basic security monitoring, advanced threat detection, cloud security and compliance.' },
         { capability: 'Detection content', description: '600+ active detection workbooks in real-time streaming, updated continuously with the threat landscape.' },
@@ -272,15 +270,15 @@ export const products: ProductContent[] = [
       ],
     },
     faqs: [
-      { q: 'Does any data leave our datacenter?', a: 'No. Bloo On-Prem SIEM runs the full collection, detection and response pipeline inside your own bare metal  -  no telemetry is forwarded to a vendor cloud.' },
+      { q: 'Does any data leave our datacenter?', a: 'No. Bloo Bare Metal SIEM runs the full collection, detection and response pipeline inside your own bare metal  -  no telemetry is forwarded to a vendor cloud.' },
       { q: 'How does it reduce total cost of ownership?', a: 'Up to 98% compression cuts hardware needs, auto-recovery and master configuration reduce administration, and three products ship at the price of one  -  for headline savings up to 90% on security engineering.' },
       { q: 'How much data can it store?', a: 'Stream compression stores significantly more data on the same disk footprint, so you can retain far longer history without expanding hardware.' },
       { q: 'How is detection content kept current?', a: 'Correlation rules, analytic models and ML models update in real time with the changing threat landscape  -  your engineering team is not rebuilding content every quarter.' },
     ],
     related: ['bloo-vantage', 'datafabric', 'synthai'],
     meta: {
-      title: 'Bloo On-Prem SIEM | Sovereign On-Premise SIEM',
-      description: 'Bloo On-Prem SIEM runs the full detection pipeline in your bare metal  -  up to 98% compression, 600+ workbooks, no data forwarded.',
+      title: 'Bloo Bare Metal SIEM | Sovereign Bare Metal SIEM',
+      description: 'Bloo Bare Metal SIEM runs the full detection pipeline in your bare metal  -  up to 98% compression, 600+ workbooks, no data forwarded.',
       keyword: 'on premise SIEM',
     },
     pillar: 'Control',

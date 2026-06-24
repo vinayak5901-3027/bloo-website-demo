@@ -56,7 +56,7 @@ export default function BlogPost({ params }: { params: { slug: string } }) {
         <header className="border-b border-border bg-surface/30">
           <Container className="py-12 lg:py-16">
             <div className="mx-auto max-w-3xl">
-              <div className="flex items-center gap-2 text-xs">
+              <div className="flex items-center gap-2 text-sm">
                 <span className="font-mono uppercase tracking-widecaps text-secondary">{frontmatter.category}</span>
                 <span className="text-muted">· {frontmatter.readingTime}</span>
               </div>

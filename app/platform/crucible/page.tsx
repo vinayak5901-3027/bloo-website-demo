@@ -122,7 +122,7 @@ export default function CruciblePage() {
                     <Icon name={cat.icon} size={22} />
                   </span>
                   <h3 className="mt-3 text-sm font-bold text-bright">{cat.label}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">{cat.examples}</p>
+                  <p className="mt-2 text-sm leading-relaxed text-muted">{cat.examples}</p>
                 </div>
               </Reveal>
             ))}

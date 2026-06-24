@@ -86,7 +86,7 @@ export default function CareersPage() {
                       <Badge tone="muted">{r.team}</Badge>
                     </div>
                     <p className="mt-2 max-w-2xl text-sm leading-relaxed text-muted">{r.summary}</p>
-                    <p className="mt-2 inline-flex items-center gap-1.5 text-xs text-muted">
+                    <p className="mt-2 inline-flex items-center gap-1.5 text-sm text-muted">
                       <MapPin size={14} aria-hidden="true" /> {r.location} · {r.type}
                     </p>
                   </div>

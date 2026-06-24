@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { Hero } from '@/components/sections/Hero';
 import { HeroVisual } from '@/components/sections/HeroVisual';
@@ -95,7 +96,7 @@ export default function HomePage() {
         items={[
           { value: 'Up to 98%', label: 'Compression', sub: 'Same disk footprint holds far more data' },
           { value: '365 Days', label: 'Hot retention OOTB', sub: 'Threat hunt and audit against complete truth' },
-          { value: '60%', label: 'Lower composite cost', sub: 'Below typical on-premise deployments', tone: 'accent' },
+          { value: '60%', label: 'Lower composite cost', sub: 'Below typical Bare Metal deployments', tone: 'accent' },
           { value: '600+', label: 'Detection workbooks', sub: 'Streaming rules updated continuously' },
         ]}
       />
@@ -178,15 +179,19 @@ export default function HomePage() {
           />
           <div className="flex flex-wrap items-center justify-center gap-6">
             <Reveal>
-              <div className="rounded-lg border border-border bg-surface/70 px-8 py-5 text-center">
-                <p className="text-base font-bold text-bright">ISO 27001</p>
-                <p className="mt-1 text-xs text-muted">Information Security</p>
+              <div className="flex h-64 w-56 flex-col items-center justify-center rounded-lg border border-border bg-surface/70 px-6 py-6 text-center">
+                <div className="flex h-36 w-36 items-center justify-center">
+                  <Image src="/assets/1000328394.jpg" alt="ISO 27001 Certified" width={136} height={136} className="h-full w-full object-contain" />
+                </div>
+                <p className="mt-4 text-sm font-semibold text-muted">Information Security</p>
               </div>
             </Reveal>
             <Reveal delay={80}>
-              <div className="rounded-lg border border-border bg-surface/70 px-8 py-5 text-center">
-                <p className="text-base font-bold text-bright">SOC 2 Type II</p>
-                <p className="mt-1 text-xs text-muted">Security &amp; Availability</p>
+              <div className="flex h-64 w-56 flex-col items-center justify-center rounded-lg border border-border bg-surface/70 px-6 py-6 text-center">
+                <div className="flex h-36 w-36 items-center justify-center">
+                  <Image src="/assets/21972-312_SOC_NonCPA.png" alt="SOC 2 Type II" width={136} height={136} className="h-full w-full object-contain" />
+                </div>
+                <p className="mt-4 text-sm font-semibold text-muted">Security &amp; Availability</p>
               </div>
             </Reveal>
           </div>
@@ -273,7 +278,7 @@ export default function HomePage() {
               {featuredPosts.map((post, i) => (
                 <Reveal key={post.slug} delay={(i % 4) * 70}>
                   <Card href={`/blog/${post.slug}`} className="flex h-full flex-col">
-                    <div className="flex items-center gap-2 text-xs">
+                    <div className="flex items-center gap-2 text-sm">
                       <span className="font-mono uppercase tracking-widecaps text-secondary">{post.frontmatter.category}</span>
                       <span className="text-muted">· {post.frontmatter.readingTime}</span>
                     </div>
@@ -281,7 +286,7 @@ export default function HomePage() {
                       {post.frontmatter.title}
                     </h3>
                     <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">{post.frontmatter.description}</p>
-                    <div className="mt-4 text-xs text-muted">
+                    <div className="mt-4 text-sm text-muted">
                       {post.frontmatter.author} · {formatDate(post.frontmatter.date)}
                     </div>
                   </Card>

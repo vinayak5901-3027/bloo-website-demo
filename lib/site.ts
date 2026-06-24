@@ -70,9 +70,9 @@ export const primaryNav: NavGroup[] = [
         description: 'The memory layer  -  full-fidelity telemetry, retained and reasoned over.',
       },
       {
-        label: 'Bloo SIEM',
+        label: 'Vantage',
         href: '/platform/bloo-vantage',
-        description: 'Cloud-native SIEM, user analytics and automation. Detection & investigation.',
+        description: 'SecOps platform  -  SIEM, UEBA, Endpoint Telemetry and ML models on one data fabric.',
       },
       {
         label: 'SynthAI',
@@ -142,7 +142,7 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
     links: [
       { label: 'Platform overview', href: '/platform' },
       { label: 'Bloo Datafabric', href: '/platform/datafabric' },
-      { label: 'Bloo SIEM', href: '/platform/bloo-vantage' },
+      { label: 'Vantage', href: '/platform/bloo-vantage' },
       { label: 'SynthAI', href: '/platform/synthai' },
       { label: 'Crucible', href: '/platform/crucible' },
     ],

@@ -14,7 +14,7 @@ import { buildMetadata } from '@/lib/seo';
 export const metadata = buildMetadata({
   title: 'Pricing | Bloo',
   description:
-    'Predictable, ingest-free pricing that scales with retention time, not data volume. Cloud SaaS, sovereign on-prem, or the full platform  -  talk to sales.',
+    'Predictable, ingest-free pricing that scales with retention time, not data volume. Cloud SaaS, sovereign Bare Metal, or the full platform  -  talk to sales.',
   path: '/pricing',
   keywords: ['SIEM pricing', 'security platform pricing'],
 });
@@ -49,7 +49,7 @@ const plans = [
     featured: true,
   },
   {
-    name: 'Bloo On-Prem SIEM',
+    name: 'Bloo Bare Metal SIEM',
     tag: 'Sovereign',
     summary: 'The full pipeline inside your own bare metal  -  no data forwarded.',
     features: [
@@ -82,7 +82,7 @@ export default function PricingPage() {
         items={[
           { value: '0', label: 'Ingestion penalties', sub: 'Log every source you need', tone: 'accent' },
           { value: 'Up to 98%', label: 'Compression', sub: 'More data on the same footprint' },
-          { value: '60%', label: 'Lower composite cost', sub: 'Below typical on-prem deployments' },
+          { value: '60%', label: 'Lower composite cost', sub: 'Below typical Bare Metal deployments' },
         ]}
       />
 
@@ -142,8 +142,8 @@ export default function PricingPage() {
         heading="How Bloo pricing works"
         faqs={[
           { q: 'Do you charge by data ingested?', a: 'No. Pricing scales with retention time, not ingestion volume. A system of record must encourage complete truth, not selective logging  -  so you are never penalized for logging more sources.' },
-          { q: 'How is Bloo cheaper than legacy SIEMs?', a: 'Up to 98% compression cuts storage, and consolidating SIEM, user analytics and automation into one platform removes overlapping licenses  -  landing composite cost roughly 60% below typical on-prem deployments.' },
-          { q: 'What does On-Prem pricing look like?', a: 'Bloo On-Prem is licensed per device with predictable, unlimited per-device use  -  three capabilities at the price of one, with no ingestion metering.' },
+          { q: 'How is Bloo cheaper than legacy SIEMs?', a: 'Up to 98% compression cuts storage, and consolidating SIEM, user analytics and automation into one platform removes overlapping licenses  -  landing composite cost roughly 60% below typical Bare Metal deployments.' },
+          { q: 'What does Bare Metal pricing look like?', a: 'Bloo Bare Metal is licensed per device with predictable, unlimited per-device use  -  three capabilities at the price of one, with no ingestion metering.' },
           { q: 'Can I start with one product and expand?', a: 'Yes. Start with Bloo SIEM or the Datafabric memory layer and add SynthAI and Crucible as you grow  -  everything runs on the same system of record.' },
         ]}
       />

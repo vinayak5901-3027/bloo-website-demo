@@ -53,7 +53,8 @@ export function RelatedProducts({ slugs, heading = 'Explore the platform' }: { s
                   <ProductLogo slug={p!.slug} height={52} />
                 </div>
                 <p className="mt-1 flex-1 text-sm leading-relaxed text-muted">{p!.meta.description}</p>
-                <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-bold text-secondary transition-colors group-hover:text-bright">
+                <span className="mt-5 inline-flex w-full items-center justify-end gap-1.5 text-sm font-bold text-secondary transition-colors group-hover:text-bright">
+                  View
                   <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                 </span>
               </Card>

@@ -17,7 +17,7 @@ export const metadata = buildMetadata({
 
 const sections: { icon: IconName; title: string; description: string }[] = [
   { icon: 'compass', title: 'Getting started', description: 'Concepts, the system-of-record model, and a guided first deployment.' },
-  { icon: 'cloud', title: 'Deployment', description: 'Deploy cloud-native SaaS or sovereign on-prem on Kubernetes (AWS, Azure).' },
+  { icon: 'cloud', title: 'Deployment', description: 'Deploy cloud-native SaaS or sovereign Bare Metal on Kubernetes (AWS, Azure).' },
   { icon: 'plug', title: 'Connectors', description: 'Onboard sources across cloud, identity, endpoint and applications.' },
   { icon: 'shield', title: 'Detection content', description: 'Use and author the 600+ streaming workbooks and SOAR playbooks.' },
   { icon: 'terminal', title: 'Bloo Query Language', description: 'High-speed search, correlation and Spark SQL across full-fidelity history.' },

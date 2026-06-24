@@ -49,7 +49,7 @@ export function StatsBand({
                 {s.value}
               </div>
               <div className="mt-3 text-sm font-bold text-bright">{s.label}</div>
-              {s.sub && <p className="mt-1.5 text-xs leading-relaxed text-muted">{s.sub}</p>}
+              {s.sub && <p className="mt-2 text-sm leading-relaxed text-muted">{s.sub}</p>}
             </Reveal>
           ))}
         </div>
@@ -76,7 +76,7 @@ export function FeatureGrid({
     <Section alt={alt}>
       <Container>
         <SectionHeading eyebrow={eyebrow} title={heading} intro={intro} />
-        <div className="cards-carousel mt-12">
+        <div className="grid grid-cols-1 gap-5 mt-12 sm:grid-cols-2 lg:grid-cols-3">
           {items.map((f, i) => (
             <Reveal key={f.title} delay={(i % 3) * 70}>
               <FeatureCard icon={f.icon} title={f.title} description={f.description} />

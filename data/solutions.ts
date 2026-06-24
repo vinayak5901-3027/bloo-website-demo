@@ -96,7 +96,7 @@ export const solutions: SolutionContent[] = [
     faqs: [
       { q: 'Which frameworks does Bloo support?', a: 'Bloo provides the long-term retention, monitoring evidence and audit trail required across frameworks such as PCI DSS, HIPAA, SOC 2, GDPR, DORA and NIST. Controls map to your specific obligations.' },
       { q: 'How long can we keep evidence?', a: 'Up to 120 months (10 years) of online, queryable retention  -  with up to 98% compression keeping the cost predictable.' },
-      { q: 'Can we keep regulated data in-region?', a: 'Yes. Deploy SaaS in available residency regions, or run Bloo On-Prem entirely inside your own bare metal so data never leaves your walls.' },
+      { q: 'Can we keep regulated data in-region?', a: 'Yes. Deploy SaaS in available residency regions, or run Bloo Bare Metal entirely inside your own bare metal so data never leaves your walls.' },
     ],
     meta: {
       title: 'Compliance Monitoring | Bloo',
@@ -157,7 +157,7 @@ export const solutions: SolutionContent[] = [
     hero: {
       headline: 'Replace or augment a legacy SIEM  - ',
       headlineEmphasis: 'without ingestion penalties.',
-      sub: 'Move to a cloud-scale datalake that lets you log everything, keep it hot for years, and cut composite cost below on-premise  -  with detection, analytics and automation built in.',
+      sub: 'Move to a cloud-scale datalake that lets you log everything, keep it hot for years, and cut composite cost below Bare Metal  -  with detection, analytics and automation built in.',
     },
     problem: {
       heading: 'Legacy SIEM economics force bad security decisions',
@@ -176,7 +176,7 @@ export const solutions: SolutionContent[] = [
         { icon: 'scale', title: 'Log everything', description: 'No ingestion penalties, which means coverage is a security decision, not a budget one.' },
         { icon: 'layers', title: 'Consolidated stack', description: 'SIEM, user analytics and automation on one datalake, which means fewer tools to license and operate.' },
         { icon: 'cloud', title: 'Zero ops overhead', description: 'No database administrators required, which means your team focuses on security, not infrastructure.' },
-        { icon: 'gauge', title: 'Lower composite cost', description: 'Cost below on-premise deployments, which means modernization that pays for itself.' },
+        { icon: 'gauge', title: 'Lower composite cost', description: 'Cost below Bare Metal deployments, which means modernization that pays for itself.' },
       ],
     },
     stats: [
@@ -187,7 +187,7 @@ export const solutions: SolutionContent[] = [
     products: ['bloo-vantage', 'bloo-onprem-siem', 'datafabric'],
     faqs: [
       { q: 'Do we rip and replace, or run side by side?', a: 'Either. Bloo can replace a legacy SIEM outright or run alongside it  -  forwarding detections and serving as the long-term, low-cost datalake while you migrate.' },
-      { q: 'How is the cost lower?', a: 'Pricing scales with retention time, not ingestion volume, and up to 98% compression cuts storage  -  so composite cost lands below typical on-premise deployments.' },
+      { q: 'How is the cost lower?', a: 'Pricing scales with retention time, not ingestion volume, and up to 98% compression cuts storage  -  so composite cost lands below typical Bare Metal deployments.' },
       { q: 'What about our existing detection content?', a: 'Bloo ships 600+ workbooks and supports custom detections in Python, Bloo Query Language and Spark SQL, so you can migrate logic without starting from zero.' },
     ],
     meta: {

@@ -58,7 +58,7 @@ export default function RequestDemoPage() {
                 ].map((s) => (
                   <div key={s.l} className="bg-bg p-4 text-center">
                     <div className="text-2xl font-black text-emphasis">{s.v}</div>
-                    <div className="mt-1 text-xs text-muted">{s.l}</div>
+                    <div className="mt-2 text-sm text-muted">{s.l}</div>
                   </div>
                 ))}
               </div>

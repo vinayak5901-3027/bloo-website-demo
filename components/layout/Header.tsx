@@ -133,50 +133,54 @@ export function Header() {
                 </button>
                 {open && (
                   <div
-                    className="absolute left-0 top-full w-[340px] pt-3"
+                    className={clsx('absolute left-0 top-full pt-3', group.children!.length > 3 ? 'w-[680px]' : 'w-[480px]')}
                     role="menu"
                     aria-label={group.label}
                   >
                     <div className="overflow-hidden rounded-lg border border-border bg-surface shadow-3 animate-fade-in">
-                      {group.overview && (
-                        <Link
-                          href={group.overview.href}
-                          role="menuitem"
-                          className="block border-b border-border bg-gradient-brand-soft p-4 transition-colors hover:bg-surface-2"
-                        >
-                          <span className="text-sm font-bold text-bright">{group.overview.label}</span>
-                          {group.overview.description && (
-                            <span className="mt-1 block text-xs leading-relaxed text-muted">
-                              {group.overview.description}
-                            </span>
-                          )}
-                        </Link>
-                      )}
-                      <ul className="p-2">
-                        {group.children!.map((child) => {
-                          const slug = productSlugs[child.href];
-                          return (
-                            <li key={child.href}>
-                              <Link
-                                href={child.href}
-                                role="menuitem"
-                                className="block rounded-sm p-3 transition-colors hover:bg-surface-2"
-                              >
-                                {slug ? (
-                                  <ProductLogo slug={slug} height={24} />
-                                ) : (
-                                  <span className="text-sm font-bold text-body">{child.label}</span>
-                                )}
-                                {child.description && (
-                                  <span className="mt-0.5 block text-xs leading-relaxed text-muted">
-                                    {child.description}
-                                  </span>
-                                )}
-                              </Link>
-                            </li>
-                          );
-                        })}
-                      </ul>
+                      <div className="flex">
+                        {/* Left: overview */}
+                        {group.overview && (
+                          <Link
+                            href={group.overview.href}
+                            role="menuitem"
+                            className="flex w-[180px] shrink-0 flex-col justify-center border-r border-border bg-gradient-brand-soft p-5 transition-colors hover:bg-surface-2"
+                          >
+                            <span className="text-base font-bold text-bright">{group.overview.label}</span>
+                            {group.overview.description && (
+                              <span className="mt-2 block text-sm leading-relaxed text-muted">
+                                {group.overview.description}
+                              </span>
+                            )}
+                          </Link>
+                        )}
+                        {/* Right: children grid */}
+                        <ul className="grid flex-1 grid-cols-2 gap-px bg-border p-0">
+                          {group.children!.map((child) => {
+                            const slug = productSlugs[child.href];
+                            return (
+                              <li key={child.href} className="bg-surface">
+                                <Link
+                                  href={child.href}
+                                  role="menuitem"
+                                  className="flex h-full flex-col p-4 transition-colors hover:bg-surface-2"
+                                >
+                                  {slug ? (
+                                    <ProductLogo slug={slug} height={36} />
+                                  ) : (
+                                    <span className="text-base font-bold text-bright">{child.label}</span>
+                                  )}
+                                  {child.description && (
+                                    <span className="mt-2 block text-sm leading-relaxed text-muted">
+                                      {child.description}
+                                    </span>
+                                  )}
+                                </Link>
+                              </li>
+                            );
+                          })}
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 )}
@@ -256,7 +260,7 @@ export function Header() {
                           return (
                             <li key={child.href}>
                               <Link href={child.href} className="block rounded-sm px-3 py-2.5 text-sm text-muted hover:text-bright">
-                                {slug ? <ProductLogo slug={slug} height={26} /> : child.label}
+                                {slug ? <ProductLogo slug={slug} height={32} /> : child.label}
                               </Link>
                             </li>
                           );

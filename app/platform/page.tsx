@@ -54,7 +54,7 @@ export default function PlatformPage() {
                   <div className="mt-5 flex items-center justify-between">
                     <Badge tone="muted">Pillar · {p.pillar}</Badge>
                     <span className="inline-flex items-center gap-1.5 text-sm font-bold text-secondary group-hover:text-bright">
-                      Explore <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
+                      View <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />
                     </span>
                   </div>
                 </Card>
@@ -83,7 +83,7 @@ export default function PlatformPage() {
             align="center"
             eyebrow="DEPLOYMENT"
             title="Your cloud, your data, your control"
-            intro="Bloo deploys inside your own cloud or bare metal. Choose cloud-native SaaS or fully sovereign on-premise  -  the same platform, the same control."
+            intro="Bloo deploys inside your own cloud or bare metal. Choose cloud-native SaaS or fully sovereign Bare Metal  -  the same platform, the same control."
             className="mb-10"
           />
           <div className="flex flex-wrap justify-center gap-3">
@@ -91,7 +91,7 @@ export default function PlatformPage() {
               Cloud (SaaS)
             </Link>
             <Link href="/platform/bloo-onprem-siem" className="rounded-sm border border-border bg-surface px-5 py-3 text-sm font-bold text-body transition-colors hover:border-secondary/60 hover:text-bright">
-              On-premise
+              Bare Metal
             </Link>
           </div>
         </Container>

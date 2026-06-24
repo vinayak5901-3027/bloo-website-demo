@@ -96,7 +96,7 @@ export default function BlogIndex() {
             {rest.map((p, i) => (
               <Reveal key={p.slug} delay={(i % 4) * 70}>
                 <Card href={`/blog/${p.slug}`} className="flex h-full flex-col">
-                  <div className="flex items-center gap-2 text-xs">
+                  <div className="flex items-center gap-2 text-sm">
                     <span className="font-mono uppercase tracking-widecaps text-secondary">
                       {p.frontmatter.category}
                     </span>
@@ -108,7 +108,7 @@ export default function BlogIndex() {
                   <p className="mt-2 flex-1 text-sm leading-relaxed text-muted">
                     {p.frontmatter.description}
                   </p>
-                  <div className="mt-4 text-xs text-muted">
+                  <div className="mt-4 text-sm text-muted">
                     {p.frontmatter.author} · {formatDate(p.frontmatter.date)}
                   </div>
                 </Card>
