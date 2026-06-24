@@ -1,0 +1,590 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================================
+   Bloo — design tokens, per "Bloo Design Guide 2026".
+   Two rooms, switchable via data-theme on <html>:
+     · INK  (default / [data-theme="dark"])  — ink #0B1220, paper
+       text, scarce signal-cyan #6FE3C8 accent. "Ink is home."
+     · PAPER ([data-theme="light"])           — warm paper #F4F1EA,
+       ink text, teal signal-dk #1E8A74 accent. The contrast room.
+   Colors are stored as "R G B" channel triplets so Tailwind can
+   apply opacity (e.g. bg-secondary/20). Change values here to
+   re-theme the entire site; the theme toggle just flips data-theme.
+   ============================================================ */
+:root,
+[data-theme="dark"] {
+  /* Brand */
+  --c-primary: 26 58 107; /* #1A3A6B chakra — secondary blue, dataviz, dark gradients */
+  --c-secondary: 111 227 200; /* #6FE3C8 SIGNAL — links, interactive, eyebrows, emphasis */
+  --c-accent: 111 227 200; /* #6FE3C8 signal — used scarcely (the one earned color) */
+
+  /* Ink surfaces */
+  --c-bg: 11 18 32; /* #0B1220 ink — primary surface */
+  --c-bg-soft: 17 26 43; /* #111A2B ink-alt */
+  --c-surface: 17 26 43; /* #111A2B ink-alt — cards / panels */
+  --c-surface-2: 25 37 58; /* #19253A ink-2 — hover / icon tiles */
+  --c-border: 44 50 62; /* paper @ ~14% over ink — the hairline rule */
+
+  /* Text */
+  --c-text: 209 207 199; /* dim paper — body */
+  --c-text-bright: 244 241 234; /* #F4F1EA paper — headings */
+  --c-text-muted: 150 152 155; /* paper @ ~62% — captions / meta */
+
+  /* Emphasis (headline noun, key stat) = signal */
+  --c-info: 111 227 200; /* #6FE3C8 */
+
+  /* Semantic */
+  --c-success: 45 212 167; /* #2DD4A7 */
+  --c-error: 255 92 92; /* #FF5C5C */
+  --c-amber: 232 164 76; /* #E8A44C — caution / adversary / regulatory ceiling */
+
+  color-scheme: dark;
+}
+
+/* ------------------------------------------------------------
+   PAPER room — the guide's light "contrast" palette as a full
+   theme. Accents shift to their *-dk variants for AA on cream.
+   ------------------------------------------------------------ */
+[data-theme="light"] {
+  --c-primary: 26 58 107; /* #1A3A6B chakra */
+  --c-secondary: 30 138 116; /* #1E8A74 signal-dk — links, interactive, eyebrows */
+  --c-accent: 30 138 116; /* #1E8A74 signal-dk */
+
+  --c-bg: 244 241 234; /* #F4F1EA warm paper */
+  --c-bg-soft: 234 230 220; /* #EAE6DC paper-alt */
+  --c-surface: 252 251 247; /* #FCFBF7 card (a hair above paper) */
+  --c-surface-2: 234 230 220; /* #EAE6DC hover / icon tiles */
+  --c-border: 211 210 206; /* ink @ ~14% over paper — the hairline rule */
+
+  --c-text: 43 47 56; /* #2B2F38 ink-soft — body */
+  --c-text-bright: 11 18 32; /* #0B1220 ink — headings */
+  --c-text-muted: 107 110 117; /* ink @ ~58% — captions / meta */
+
+  --c-info: 30 138 116; /* #1E8A74 signal-dk */
+
+  --c-success: 30 138 116; /* #1E8A74 */
+  --c-error: 192 41 41; /* #C02929 */
+  --c-amber: 176 118 40; /* #B07628 amber-dk */
+
+  color-scheme: light;
+}
+
+/* Shared, theme-independent tokens */
+:root {
+  /* Fonts are injected by next/font (see app/layout.tsx).
+     Mono = JetBrains Mono (eyebrows, IDs, footers, queries). */
+  --font-mono: var(--font-jbmono), ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  --header-height: 76px;
+  --ease-brand: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+/* Smooth the room-switch so the toggle reads as one motion, not a flash. */
+html,
+body,
+.theme-anim {
+  transition: background-color 320ms var(--ease-brand), border-color 320ms var(--ease-brand),
+    color 320ms var(--ease-brand);
+}
+@media (prefers-reduced-motion: reduce) {
+  html,
+  body,
+  .theme-anim {
+    transition: none;
+  }
+}
+
+/* Theme-aware wordmark: show the white logo on ink, the colour logo on paper. */
+.logo-on-light {
+  display: none;
+}
+[data-theme="light"] .logo-on-dark {
+  display: none;
+}
+[data-theme="light"] .logo-on-light {
+  display: revert;
+}
+
+/* Product logo theme-awareness — same pattern as site wordmark */
+.product-logo-dark {
+  display: block;
+}
+.product-logo-light {
+  display: none;
+}
+[data-theme="light"] .product-logo-dark {
+  display: none;
+}
+[data-theme="light"] .product-logo-light {
+  display: block;
+}
+
+/* ------------------------------------------------------------ Base */
+* {
+  border-color: rgb(var(--c-border));
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: calc(var(--header-height) + 16px);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background-color: rgb(var(--c-bg));
+  color: rgb(var(--c-text));
+  font-weight: 300;                            /* Lato Light */
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem); /* 14px → 15px per brand guide */
+  line-height: 1.7;
+  max-width: none;                           /* full-width canvas */
+  font-feature-settings: "kern", "liga";
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Prevent background scroll when mobile menu is open without breaking iOS fixed positioning */
+html.menu-open body {
+  overflow: hidden;
+  position: fixed;
+  width: 100%;
+}
+
+::selection {
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-bg));
+}
+
+/* Headline colour (applies everywhere, incl. chrome) */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  color: rgb(var(--c-text-bright));
+  text-wrap: balance;
+}
+
+/* ============================================================
+   TYPOGRAPHY SYSTEM — Bloo Design Guide 2026
+   Fluid CSS clamp() — mobile-first, zero media-query breakpoints.
+
+   PAGE / SECTION
+   ┌───────────────────┬────────────────────────────────────┬────────┬─────────┐
+   │ Role              │ clamp(min, fluid, max)             │ Weight │ LH      │
+   ├───────────────────┼────────────────────────────────────┼────────┼─────────┤
+   │ Hero / Display    │ clamp(2.25rem, 5vw, 3.5rem)        │ 300    │ 1.1     │
+   │ H1                │ clamp(1.875rem, 4vw, 2.5rem)       │ 300    │ 1.15    │
+   │ H2                │ clamp(1.5rem, 3vw, 1.75rem)        │ 300    │ 1.2     │
+   │ H3                │ clamp(1.125rem, 2vw, 1.25rem)      │ 300    │ 1.3     │
+   │ H4/H5/H6          │ clamp(1rem, 1.8vw, 1.125rem)       │ 300    │ 1.35    │
+   │ Body/Para/Desc    │ clamp(0.875rem, 1.2vw, 0.9375rem)  │ 300    │ 1.7     │
+   │ Eyebrow/Mono/Code │ clamp(0.6875rem, 1vw, 0.8125rem)   │ Mono   │ 1.5     │
+   │ Quotes/Slogans    │ clamp(1rem, 1.5vw, 1.125rem)       │ 300    │ 1.6     │
+   ├───────────────────┼────────────────────────────────────┼────────┼─────────┤
+
+   CARD SYSTEM
+   ├───────────────────┼────────────────────────────────────┼────────┼─────────┤
+   │ Card Title        │ clamp(1.25rem, 2vw, 1.5rem)        │ 300    │ 1.3     │
+   │ Card H1           │ clamp(1.125rem, 1.8vw, 1.375rem)   │ 300    │ 1.3     │
+   │ Card H2           │ clamp(1rem, 1.6vw, 1.125rem)       │ 300    │ 1.35    │
+   │ Card H3           │ clamp(0.875rem, 1.4vw, 1rem)       │ 300    │ 1.4     │
+   │ Card H4/H5/H6     │ clamp(0.8125rem, 1.2vw, 0.9375rem) │ 300    │ 1.4     │
+   │ Card Body         │ clamp(0.75rem, 1.1vw, 0.875rem)    │ 300    │ 1.6     │
+   │ Card Eyebrow/Code │ clamp(0.625rem, 0.9vw, 0.75rem)    │ Mono   │ 1.5     │
+   │ Card Quotes       │ clamp(0.75rem, 1.1vw, 0.875rem)    │ 300    │ 1.6     │
+   └───────────────────┴────────────────────────────────────┴────────┴─────────┘
+
+   · All headings support <em> for italic noun emphasis (inherits weight).
+   · Title tracking: -0.02em. Eyebrow tracking: 0.14em. All others: normal.
+   · Body max-width: 65ch–75ch for line length control.
+   ============================================================ */
+
+/* ── Page headings ─────────────────────────────────────────── */
+
+/* Hero / Display — 56px max · Lato Light · -0.02em tracking */
+.display-title {
+  font-weight: 300;
+  font-size: clamp(2.25rem, 5vw, 3.5rem);
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+}
+
+/* H1 — 40px max · Lato Light */
+main h1, h1 {
+  font-weight: 300;
+  font-size: clamp(1.875rem, 4vw, 2.5rem);
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+/* H2 — 28px max · Lato Light */
+main h2, h2 {
+  font-weight: 300;
+  font-size: clamp(1.5rem, 3vw, 1.75rem);
+  line-height: 1.2;
+  letter-spacing: normal;
+}
+
+/* H3 — 20px max · Lato Light */
+main h3, h3 {
+  font-weight: 300;
+  font-size: clamp(1.125rem, 2vw, 1.25rem);
+  line-height: 1.3;
+  letter-spacing: normal;
+}
+
+/* H4 / H5 / H6 — 18px max · Lato Light */
+main :is(h4, h5, h6), :is(h4, h5, h6) {
+  font-weight: 300;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+
+/* Italic noun emphasis — wrap one key word in <em> */
+h1 em, h2 em, h3 em, h4 em, h5 em, h6 em,
+.hero-title em, .display-title em, .t-title em,
+.card-title em {
+  font-style: italic;
+  font-weight: inherit;
+}
+
+/* ── Body text ─────────────────────────────────────────────── */
+
+p {
+  font-weight: 300;
+  font-size: clamp(0.875rem, 1.2vw, 0.9375rem); /* 14px → 15px */
+  line-height: 1.7;
+  max-width: 70ch;
+}
+
+/* ── Eyebrow / Mono / Code ─────────────────────────────────── */
+.font-mono,
+code,
+kbd,
+pre,
+samp {
+  font-size: clamp(0.6875rem, 1vw, 0.8125rem); /* 11px → 13px */
+  line-height: 1.5;
+  letter-spacing: 0.14em;
+}
+
+/* Headings collapse heavy Tailwind utilities to Light (300) */
+.font-medium  { font-weight: 300; }
+.font-semibold,
+.font-bold,
+.font-extrabold,
+.font-black   { font-weight: 300; }
+
+/* ── Semantic role utilities ───────────────────────────────── */
+@layer components {
+
+  /* ─── Page / Section ─── */
+
+  /* Hero / Display — 56px max · Lato Light · -0.02em tracking */
+  .hero-title {
+    font-weight: 300;
+    font-size: clamp(2.25rem, 5vw, 3.5rem);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
+    color: rgb(var(--c-text-bright));
+  }
+  .display-title { @apply hero-title; }
+
+  /* Lead / subtitle — 15px · Lato Light */
+  .subtitle {
+    font-weight: 300;
+    font-size: clamp(0.875rem, 1.2vw, 0.9375rem); /* 14px → 15px */
+    line-height: 1.7;
+    color: rgb(var(--c-text-muted));
+    max-width: 70ch;
+  }
+
+  /* H1-tier non-element title — 40px · Lato Light */
+  .t-title {
+    font-weight: 300;
+    font-size: clamp(1.875rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    color: rgb(var(--c-text-bright));
+  }
+
+  /* Body / Paragraph — 15px max · Lato Light */
+  .t-body {
+    font-weight: 300;
+    font-size: clamp(0.875rem, 1.2vw, 0.9375rem); /* 14px → 15px */
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+
+  /* Description — 15px max · Lato Light */
+  .t-desc {
+    font-weight: 300;
+    font-size: clamp(0.875rem, 1.2vw, 0.9375rem); /* 14px → 15px */
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+
+  /* Quote / Slogan / Comment — 18px max · Lato Light */
+  .t-quote {
+    font-family: var(--font-lato), system-ui, sans-serif;
+    font-weight: 300;
+    font-size: clamp(1rem, 1.5vw, 1.125rem); /* 16px → 18px */
+    line-height: 1.6;
+  }
+
+  /* Bullet / list item — 15px max · Lato Light */
+  .t-bullet {
+    font-weight: 300;
+    font-size: clamp(0.875rem, 1.2vw, 0.9375rem); /* 14px → 15px */
+    line-height: 1.7;
+  }
+
+  /* Eyebrow label — 13px max · JetBrains Mono · 0.14em caps tracking */
+  .eyebrow {
+    @apply inline-flex items-center gap-2 font-mono uppercase text-secondary;
+    font-size: clamp(0.6875rem, 1vw, 0.8125rem); /* 11px → 13px */
+    letter-spacing: 0.14em;
+    line-height: 1.5;
+  }
+
+  /* ─── Card System ─── */
+
+  /* Card title — 24px max · Lato Light */
+  .card-title {
+    font-weight: 300;
+    font-size: clamp(1.25rem, 2vw, 1.5rem);
+    line-height: 1.3;
+    letter-spacing: normal;
+    color: rgb(var(--c-text-bright));
+  }
+
+  /* Card H1 — 22px max · Lato Light */
+  .card-h1 {
+    font-weight: 300;
+    font-size: clamp(1.125rem, 1.8vw, 1.375rem);
+    line-height: 1.3;
+    color: rgb(var(--c-text-bright));
+  }
+
+  /* Card H2 — 18px max · Lato Light */
+  .card-h2 {
+    font-weight: 300;
+    font-size: clamp(1rem, 1.6vw, 1.125rem);
+    line-height: 1.35;
+    color: rgb(var(--c-text-bright));
+  }
+
+  /* Card H3 — 16px max · Lato Light */
+  .card-h3 {
+    font-weight: 300;
+    font-size: clamp(0.875rem, 1.4vw, 1rem);
+    line-height: 1.4;
+    color: rgb(var(--c-text-bright));
+  }
+
+  /* Card H4/H5/H6 — 15px max · Lato Light */
+  .card-h456 {
+    font-weight: 300;
+    font-size: clamp(0.8125rem, 1.2vw, 0.9375rem);
+    line-height: 1.4;
+    color: rgb(var(--c-text-bright));
+  }
+
+  /* Card body — 14px max · Lato Light */
+  .card-body {
+    font-weight: 300;
+    font-size: clamp(0.75rem, 1.1vw, 0.875rem); /* 12px → 14px */
+    line-height: 1.6;
+  }
+
+  /* Card description — 14px max · Lato Light */
+  .card-desc {
+    font-weight: 300;
+    font-size: clamp(0.75rem, 1.1vw, 0.875rem); /* 12px → 14px */
+    line-height: 1.6;
+  }
+
+  /* Card eyebrow / code — 12px max · JetBrains Mono · 0.14em tracking */
+  .card-eyebrow {
+    font-family: var(--font-mono), ui-monospace, monospace;
+    font-size: clamp(0.625rem, 0.9vw, 0.75rem); /* 10px → 12px */
+    line-height: 1.5;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+
+  /* Card quote / slogan — 14px max · Lato Light */
+  .card-quote {
+    font-family: var(--font-lato), system-ui, sans-serif;
+    font-weight: 300;
+    font-size: clamp(0.75rem, 1.1vw, 0.875rem); /* 12px → 14px */
+    line-height: 1.6;
+  }
+
+  /* ─── Section container ─── */
+  .container-bloo {
+    @apply mx-auto w-full px-5 sm:px-8 lg:px-12;
+    max-width: none;                  /* full-width canvas */
+  }
+
+  .section-pad {
+    @apply py-16 sm:py-20 lg:py-28;
+  }
+
+  /* ─── Long-form prose ─── */
+  .prose-bloo {
+    @apply text-body font-light;
+    font-size: clamp(1rem, 1.5vw, 1.125rem); /* 16px → 18px */
+    line-height: 1.7;
+    max-width: 70ch;
+  }
+  .prose-bloo > * + * { @apply mt-5; }
+  .prose-bloo h2 {
+    @apply mt-12 text-bright;
+    font-weight: 300;
+    font-size: clamp(1.625rem, 3vw, 2rem);
+    line-height: 1.25;
+  }
+  .prose-bloo h3 {
+    @apply mt-9 text-bright;
+    font-weight: 300;
+    font-size: clamp(1.375rem, 2.5vw, 1.6875rem);
+    line-height: 1.3;
+  }
+  .prose-bloo p  { @apply text-body; }
+  .prose-bloo a  {
+    @apply text-secondary underline decoration-secondary/40 underline-offset-2
+           hover:decoration-secondary transition-colors;
+  }
+  .prose-bloo strong { @apply text-bright font-light; }
+  .prose-bloo ul { @apply list-disc space-y-2 pl-6 marker:text-secondary; }
+  .prose-bloo ol { @apply list-decimal space-y-2 pl-6 marker:text-muted; }
+  .prose-bloo blockquote {
+    @apply border-l-2 border-accent pl-5 text-bright;
+    font-family: var(--font-lato), system-ui, sans-serif;
+    font-weight: 300; /* Lato Light */
+    font-style: normal;
+    font-size: 2.1875rem; /* 35px */
+    line-height: 1.3;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+  .prose-bloo code {
+    @apply font-mono rounded bg-surface-2 px-1.5 py-0.5 text-body;
+    font-size: 0.875rem; /* 14px */
+  }
+  .prose-bloo pre {
+    @apply font-mono rounded-md bg-surface-2 p-4 overflow-x-auto border border-border;
+    font-size: 0.875rem; /* 14px */
+  }
+  .prose-bloo pre code { @apply bg-transparent p-0; }
+  .prose-bloo table  { @apply w-full border-collapse text-sm my-6; }
+  .prose-bloo th {
+    @apply text-left font-mono uppercase text-muted border-b border-border px-3 py-2;
+    font-size: 0.875rem; /* 14px */
+    letter-spacing: 0.08em;
+  }
+  .prose-bloo td  { @apply border-b border-border px-3 py-2.5 align-top text-body; }
+  .prose-bloo hr  { @apply border-border my-10; }
+
+}
+
+/* Visible focus for keyboard users (WCAG 2.4.7) */
+:focus-visible {
+  outline: 2px solid rgb(var(--c-accent));
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Skip link */
+.skip-link {
+  position: fixed;
+  top: -120px;
+  left: 16px;
+  z-index: 200;
+  background: rgb(var(--c-accent));
+  color: rgb(var(--c-bg));
+  padding: 12px 18px;
+  border-radius: 8px;
+  font-weight: 300;
+  transition: top 0.2s var(--ease-brand);
+}
+.skip-link:focus {
+  top: 16px;
+}
+
+/* ------------------------------------------------------------ Scroll reveal (CSS + IntersectionObserver via lib/reveal) */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease-brand), transform 0.6s var(--ease-brand);
+  will-change: opacity, transform;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ------------------------------------------------------------ Responsive images */
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ------------------------------------------------------------ Auto-fit card grid
+   Cards reflow intelligently at any viewport — no explicit breakpoints needed.
+   At ≥640px the minimum column is 280px, giving natural 1→2→3+ reflow.        */
+.cards-carousel {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
+  gap: 1.25rem;
+}
+
+/* Touch-swipeable carousel on narrow screens (< 640px) */
+@media (max-width: 639px) {
+  .cards-carousel {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-x: contain;
+    gap: 1rem;
+    padding-bottom: 0.5rem;
+  }
+  .cards-carousel > * {
+    flex: 0 0 min(80vw, 300px);
+    scroll-snap-align: start;
+  }
+  .cards-carousel::-webkit-scrollbar { height: 3px; }
+  .cards-carousel::-webkit-scrollbar-track { background: transparent; }
+  .cards-carousel::-webkit-scrollbar-thumb {
+    background: rgb(var(--c-border));
+    border-radius: 2px;
+  }
+}
+
+/* ------------------------------------------------------------ Reduced motion (WCAG 2.3.3) */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
