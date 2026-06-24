@@ -12,11 +12,13 @@ export function StatsBand({
   heading,
   items,
   alt = true,
+  dividerAfter,
 }: {
   eyebrow?: string;
   heading?: string;
   items: Stat[];
   alt?: boolean;
+  dividerAfter?: number;
 }) {
   return (
     <Section alt={alt}>
@@ -29,11 +31,17 @@ export function StatsBand({
           style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 200px), 1fr))`, gap: '1px', background: 'rgb(var(--c-border))' }}
         >
           {items.map((s, i) => (
-            <Reveal key={i} delay={i * 60} className="bg-bg p-7 text-center sm:text-left">
+            <Reveal
+              key={i}
+              delay={i * 60}
+              className={clsx(
+                'bg-bg p-7 text-center sm:text-left',
+                dividerAfter !== undefined && i === dividerAfter && 'sm:border-l-4 sm:border-l-secondary/40',
+              )}
+            >
               <div
                 className={clsx(
                   'font-black leading-none tracking-tightish',
-                  // Numbers as photography: paper/ink by default, signal for the key one.
                   s.tone === 'accent' ? 'text-emphasis' : 'text-bright',
                   'text-3xl',
                 )}

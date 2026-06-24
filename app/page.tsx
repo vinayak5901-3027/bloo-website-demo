@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { ArrowRight, ShieldCheck, Lock, FileCheck, Users, Globe, Cpu, Server, Cloud, Smartphone, Monitor } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { Hero } from '@/components/sections/Hero';
 import { HeroVisual } from '@/components/sections/HeroVisual';
 import { StatsBand, WorkflowSteps } from '@/components/sections/Blocks';
@@ -34,36 +34,6 @@ const homeFaqs = [
   { q: 'Where does our data live?', a: 'Inside your own cloud or bare metal. Bloo deploys into your environment so sovereignty, governance and access control stay with you.' },
 ];
 
-const integrationCategories = [
-  { icon: 'shield', label: 'Endpoint & EDR', examples: 'CrowdStrike, SentinelOne, Defender' },
-  { icon: 'cloud', label: 'Cloud Platforms', examples: 'AWS, Azure, GCP' },
-  { icon: 'network', label: 'Network Security', examples: 'Palo Alto, Fortinet, Check Point' },
-  { icon: 'lock', label: 'Identity & Access', examples: 'Okta, Entra ID, CyberArk' },
-  { icon: 'fileCheck', label: 'Threat Intelligence', examples: 'VirusTotal, Recorded Future' },
-  { icon: 'activity', label: 'SIEM & Analytics', examples: 'Splunk, Sentinel, Chronicle' },
-  { icon: 'workflow', label: 'ITSM & Ticketing', examples: 'ServiceNow, Jira' },
-  { icon: 'bot', label: 'Email Security', examples: 'Proofpoint, Mimecast, Abnormal' },
-  { icon: 'database', label: 'Vulnerability Mgmt', examples: 'Qualys, Tenable, Rapid7' },
-  { icon: 'layers', label: 'Collaboration', examples: 'Slack, Teams, PagerDuty' },
-  { icon: 'server', label: 'Bare Metal & OS', examples: 'Linux, Windows, VMware' },
-  { icon: 'gauge', label: 'Forensics & Malware', examples: 'Sandboxes, detonation platforms' },
-] as const;
-
-const trustItems = [
-  { icon: ShieldCheck, title: 'Enterprise-grade security', description: 'All credentials sealed in enterprise vaults. Short-lived sessions, append-only audit trails, no secrets in application config.' },
-  { icon: Lock, title: 'Tenant isolation by design', description: 'Every database lookup and model call is scoped by tenant. Cross-tenant access is architecturally impossible.' },
-  { icon: FileCheck, title: 'Full auditability', description: 'Every verdict, pipeline execution and AI reasoning step is written to an append-only audit trail that cannot be modified.' },
-  { icon: Users, title: 'Human in command', description: 'Autonomous actions are bounded. Production-impacting decisions always route through human approval before execution.' },
-  { icon: Globe, title: 'Data sovereignty', description: 'Self-hosted on Kubernetes in your own cloud or bare metal. Your data never leaves your environment.' },
-  { icon: Cpu, title: 'Bring-your-own AI', description: 'Anthropic, OpenAI, AWS Bedrock, Google Gemini and Ollama. Switch providers per deployment or per pipeline step.' },
-];
-
-const customers = [
-  { sector: 'Global Financial Services', quote: 'We stopped rationing visibility. With Bloo we log everything and still cut our SIEM bill.' },
-  { sector: 'Healthcare Enterprise', quote: 'Full-fidelity retention means our compliance audits now run in hours, not weeks.' },
-  { sector: 'Public Sector Agency', quote: 'Sovereign deployment with no data leaving our walls - finally a platform built for our requirements.' },
-  { sector: 'Technology Scaleup', quote: 'SynthAI lets any analyst investigate like a senior - plain English questions, evidence-backed answers.' },
-];
 
 export default function HomePage() {
   const featuredPosts = getBlogPosts().slice(0, 4);
@@ -121,11 +91,12 @@ export default function HomePage() {
       <StatsBand
         eyebrow="THE NUMBERS"
         heading="Full fidelity, longer memory, predictable cost"
+        dividerAfter={2}
         items={[
           { value: 'Up to 98%', label: 'Compression', sub: 'Same disk footprint holds far more data' },
           { value: '365 Days', label: 'Hot retention OOTB', sub: 'Threat hunt and audit against complete truth' },
           { value: '60%', label: 'Lower composite cost', sub: 'Below typical on-premise deployments', tone: 'accent' },
-          { value: '99.9%', label: 'Detection accuracy', sub: 'Continuously updated detection content' },
+          { value: '600+', label: 'Detection workbooks', sub: 'Streaming rules updated continuously' },
         ]}
       />
 
@@ -195,103 +166,29 @@ export default function HomePage() {
         ]}
       />
 
-      {/* ───────────────── Work with EVERYTHING You Need */}
-      <Section alt>
-        <Container>
-          <SectionHeading
-            eyebrow="INTEGRATIONS"
-            title="Work with EVERYTHING You Need"
-            intro="Seamless integration with security devices, operating systems, cloud workloads and applications."
-            align="center"
-            className="mb-12"
-          />
-          <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-4">
-            {integrationCategories.map((cat, i) => (
-              <Reveal key={cat.label} delay={(i % 4) * 60}>
-                <div className="rounded-lg border border-border bg-surface/70 p-5 text-center transition-all duration-200 hover:border-secondary/40 hover:bg-surface-2">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-gradient-brand-soft text-secondary ring-1 ring-secondary/30">
-                    <Icon name={cat.icon} size={22} />
-                  </span>
-                  <h3 className="mt-3 text-sm font-bold text-bright">{cat.label}</h3>
-                  <p className="mt-1 text-xs leading-relaxed text-muted">{cat.examples}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <p className="text-sm font-bold text-muted">
-              <span className="text-emphasis">1,200+</span> pre-built adapters across 15+ categories
-            </p>
-            <div className="mt-4">
-              <Link href="/integrations" className="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:text-bright">
-                View all integrations <ArrowRight size={16} aria-hidden="true" />
-              </Link>
-            </div>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ───────────────── A Platform that you can TRUST */}
+      {/* ───────────────── Certifications & Compliance */}
       <Section>
         <Container>
           <SectionHeading
-            eyebrow="TRUST & COMPLIANCE"
-            title="A Platform that you can TRUST"
-            intro="We make compliance a top priority for your organization and for ours. We have aligned our security controls and processes with industry best practices and work with third-party auditors to test our systems, controls, and processes regularly."
+            eyebrow="CERTIFICATIONS & COMPLIANCE"
+            title="Built to the highest security standards"
+            intro="Bloo aligns with globally recognised security frameworks and undergoes rigorous third-party audits to ensure your data, sovereignty, and compliance requirements are always met."
             align="center"
             className="mb-12"
           />
-          <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            {trustItems.map((item, i) => (
-              <Reveal key={item.title} delay={(i % 3) * 70}>
-                <div className="rounded-lg border border-border bg-surface/70 p-6 transition-all duration-200 hover:border-secondary/40">
-                  <span className="inline-flex h-12 w-12 items-center justify-center rounded-md bg-gradient-brand-soft text-secondary ring-1 ring-secondary/30">
-                    <item.icon size={22} aria-hidden="true" />
-                  </span>
-                  <h3 className="mt-4 text-base font-bold text-bright">{item.title}</h3>
-                  <p className="mt-2 text-sm leading-relaxed text-muted">{item.description}</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-10 rounded-lg border border-secondary/30 bg-gradient-brand-soft p-6 text-center">
-            <p className="text-sm font-bold text-bright">
-              Self-hosted Kubernetes deployment - your data stays in your environment, always.
-            </p>
-            <p className="mt-2 text-sm text-muted">
-              Air-gapped deployments supported via Ollama for LLM execution.
-            </p>
-          </div>
-        </Container>
-      </Section>
-
-      {/* ───────────────── Meet the Pioneers */}
-      <Section alt>
-        <Container>
-          <SectionHeading
-            eyebrow="OUR CUSTOMERS"
-            title="Meet the Pioneers, Our Customers"
-            intro="Early investors who helped us move the needle, join this list"
-            align="center"
-            className="mb-12"
-          />
-          <div className="grid gap-5 sm:grid-cols-2">
-            {customers.map((c, i) => (
-              <Reveal key={c.sector} delay={(i % 2) * 80}>
-                <div className="rounded-lg border border-border bg-surface/70 p-7 transition-all duration-200 hover:border-secondary/40">
-                  <p className="font-mono text-xs uppercase tracking-widecaps text-secondary">{c.sector}</p>
-                  <blockquote className="mt-3 text-lg font-bold leading-snug text-bright">
-                    &ldquo;{c.quote}&rdquo;
-                  </blockquote>
-                  <p className="mt-3 text-xs text-muted">Representative of outcomes reported by Bloo customers.</p>
-                </div>
-              </Reveal>
-            ))}
-          </div>
-          <div className="mt-8 text-center">
-            <Link href="/case-studies" className="inline-flex items-center gap-2 text-sm font-bold text-secondary hover:text-bright">
-              Read case studies <ArrowRight size={16} aria-hidden="true" />
-            </Link>
+          <div className="flex flex-wrap items-center justify-center gap-6">
+            <Reveal>
+              <div className="rounded-lg border border-border bg-surface/70 px-8 py-5 text-center">
+                <p className="text-base font-bold text-bright">ISO 27001</p>
+                <p className="mt-1 text-xs text-muted">Information Security</p>
+              </div>
+            </Reveal>
+            <Reveal delay={80}>
+              <div className="rounded-lg border border-border bg-surface/70 px-8 py-5 text-center">
+                <p className="text-base font-bold text-bright">SOC 2 Type II</p>
+                <p className="mt-1 text-xs text-muted">Security &amp; Availability</p>
+              </div>
+            </Reveal>
           </div>
         </Container>
       </Section>
