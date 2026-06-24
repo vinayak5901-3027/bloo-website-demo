@@ -28,7 +28,7 @@ export function StatsBand({
         )}
         <div
           className="overflow-hidden rounded-lg border border-border"
-          style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 200px), 1fr))`, gap: '1px', background: 'rgb(var(--c-border))' }}
+          style={{ display: 'grid', gridTemplateColumns: `repeat(auto-fit, minmax(min(100%, 200px), 1fr))` }}
         >
           {items.map((s, i) => (
             <Reveal
@@ -36,7 +36,7 @@ export function StatsBand({
               delay={i * 60}
               className={clsx(
                 'bg-bg p-7 text-center sm:text-left',
-                dividerAfter !== undefined && i === dividerAfter && 'sm:border-l-4 sm:border-l-secondary/40',
+                i > 0 && 'border-t-2 border-secondary/40 sm:border-t-0 sm:border-l-2 sm:border-secondary/40',
               )}
             >
               <div

@@ -241,7 +241,7 @@ export default function HomePage() {
       <Section alt>
         <Container>
           <SectionHeading eyebrow="INDUSTRIES" title="Built for the most demanding sectors" align="center" className="mb-12" />
-          <div className="cards-carousel">
+          <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
             {industries.map((ind, i) => (
               <Reveal key={ind.slug} delay={(i % 4) * 60}>
                 <Card className="flex h-full items-start gap-4 !p-5">
