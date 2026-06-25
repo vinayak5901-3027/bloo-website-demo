@@ -100,8 +100,8 @@ export const products: ProductContent[] = [
     name: 'Bloo Vantage',
     eyebrow: 'BLOO VANTAGE · UNIFIED THREAT DETECTION',
     positioning: 'SecOps Platform',
-    cardSummary: 'Four detection engines on one data fabric — SIEM, UEBA, NBAD and EPM. 600+ streaming workbooks, 98.4% compression, 365-day hot retention and B Copilot AI assistant built in. Uncapped flat-fee licensing with a 14% year-on-year cap.',
-    cardTags: ['600+ Workbooks', '98.4% Compression', '365-Day Retention', 'SIEM · UEBA · NBAD · EPM'],
+    cardSummary: 'Four detection engines on one data fabric — SIEM, UEBA and EPM. 600+ streaming workbooks, 98.4% compression, 365-day hot retention and B Copilot AI assistant built in. Uncapped flat-fee licensing with a 14% year-on-year cap.',
+    cardTags: ['600+ Workbooks', '98.4% Compression', '365-Day Retention', 'SIEM · UEBA · EPM'],
     hero: {
       headline: 'Unified threat detection across every layer of',
       headlineEmphasis: 'the enterprise.',

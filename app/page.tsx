@@ -72,18 +72,9 @@ export default function HomePage() {
                       <ProductLogo slug={p.slug} height={52} />
                       <p className="mt-2 text-xs font-semibold uppercase tracking-widest text-secondary">{p.positioning}</p>
                     </div>
-                    <p className="mt-1 flex-1 text-sm leading-relaxed text-body">
+                    <p className="mt-1 flex-1 text-base leading-relaxed text-body">
                       {p.cardSummary ?? `${p.hero.sub.split('.')[0]}. ${p.hero.sub.split('.')[1] ?? ''}.`}
                     </p>
-                    {p.cardTags && (
-                      <div className="mt-4 flex flex-wrap gap-1.5">
-                        {p.cardTags.map((tag) => (
-                          <span key={tag} className="rounded-full border border-secondary/30 bg-gradient-brand-soft px-2.5 py-0.5 text-xs font-medium text-secondary">
-                            {tag}
-                          </span>
-                        ))}
-                      </div>
-                    )}
                     <span className="mt-5 inline-flex w-full items-center justify-end gap-1.5 text-sm font-bold text-secondary transition-colors group-hover:text-bright">
                       View
                       <ArrowRight size={16} className="transition-transform group-hover:translate-x-0.5" aria-hidden="true" />

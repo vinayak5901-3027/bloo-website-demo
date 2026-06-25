@@ -56,6 +56,14 @@ export const leadership: Leader[] = [
     linkedin: 'https://www.linkedin.com/in/santoshvishwanath',
     bio: "Santosh is a technology leader with over 17 years of experience building secure, scalable systems. At Symantec, he played a key role in their Managed Security Services, helping deliver threat detection and response for some of the world's largest organizations. Today at Bloo, he is the architect behind our core technology platform powering our Managed Detection & Response service.",
   },
+  {
+    name: 'Kuldeep Raina',
+    role: 'Chief Revenue Officer',
+    focus: 'Growth & strategic alliances',
+    photo: '/images/kuldeep.png',
+    linkedin: 'https://www.linkedin.com/in/kuldeep-raina',
+    bio: "Kuldeep brings 28 years of cybersecurity leadership across India, APAC, and MEA, having driven revenue and partnerships at McAfee, Cisco, Symantec, Sophos, Gigamon, and Seqrite. At Bloo, he leads global go-to-market strategy, enterprise growth, and the strategic alliances that position Bloo's AI-driven SecOps platform at the forefront of telemetry intelligence.",
+  },
 ];
 
 export type Role = {
