@@ -28,15 +28,15 @@ function LeaderAvatar({ name, photo }: { name: string; photo?: string }) {
 
   if (photo) {
     return (
-      <div className="relative h-[200px] w-[200px] shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/10">
+      <div className="relative h-[400px] w-[400px] shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/10">
         {/* Glass shimmer overlay */}
         <div className="pointer-events-none absolute inset-0 z-10 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-transparent" />
         <div className="pointer-events-none absolute inset-0 z-10 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.25)]" />
         <Image
           src={photo}
           alt={name}
-          width={200}
-          height={200}
+          width={400}
+          height={400}
           className="h-full w-full object-cover object-top"
         />
       </div>
@@ -44,7 +44,7 @@ function LeaderAvatar({ name, photo }: { name: string; photo?: string }) {
   }
 
   return (
-    <div className="flex h-[200px] w-[200px] shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-[56px] text-white">
+    <div className="flex h-[400px] w-[400px] shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-[112px] text-white">
       {initials}
     </div>
   );
