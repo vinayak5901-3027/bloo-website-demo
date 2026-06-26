@@ -20,7 +20,7 @@ export const metadata = buildMetadata({
   keywords: ['Bloo leadership team', 'Shomiron Das Gupta', 'Santosh Vishwanath'],
 });
 
-function LeaderAvatar({ name, photo, size = 200 }: { name: string; photo?: string; size?: number }) {
+function LeaderAvatar({ name, photo }: { name: string; photo?: string }) {
   const initials = name
     .split(' ')
     .map((n) => n[0])
@@ -28,24 +28,23 @@ function LeaderAvatar({ name, photo, size = 200 }: { name: string; photo?: strin
 
   if (photo) {
     return (
-      <div className="rounded-lg overflow-hidden">
+      <div className="relative h-[200px] w-[200px] shrink-0 overflow-hidden rounded-2xl ring-1 ring-white/10">
+        {/* Glass shimmer overlay */}
+        <div className="pointer-events-none absolute inset-0 z-10 rounded-2xl bg-gradient-to-br from-white/10 via-transparent to-transparent" />
+        <div className="pointer-events-none absolute inset-0 z-10 rounded-2xl shadow-[inset_0_1px_1px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.25)]" />
         <Image
           src={photo}
           alt={name}
-          width={size}
-          height={size}
-          className="block"
-          style={{ width: 'auto', height: 'auto' }}
+          width={200}
+          height={200}
+          className="h-full w-full object-cover object-top"
         />
       </div>
     );
   }
 
   return (
-    <div
-      className="flex shrink-0 items-center justify-center rounded-lg bg-gradient-brand text-white"
-      style={{ width: size, height: size, fontSize: size * 0.28 }}
-    >
+    <div className="flex h-[200px] w-[200px] shrink-0 items-center justify-center rounded-2xl bg-gradient-brand text-[56px] text-white">
       {initials}
     </div>
   );
@@ -109,7 +108,7 @@ export default function LeadershipPage() {
                 <div className="flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
                   {/* Photo */}
                   <div className="shrink-0">
-                    <LeaderAvatar name={leader.name} photo={leader.photo} size={200} />
+                    <LeaderAvatar name={leader.name} photo={leader.photo} />
                   </div>
 
                   {/* Bio */}
