@@ -129,29 +129,31 @@ export function WorkflowSteps({
   intro,
   steps,
   alt = true,
+  singleRow = false,
 }: {
   eyebrow: string;
   heading: string;
   intro?: string;
   steps: Step[];
   alt?: boolean;
+  singleRow?: boolean;
 }) {
   return (
     <Section alt={alt}>
       <Container>
         <SectionHeading eyebrow={eyebrow} title={heading} intro={intro} />
-        <ol className="cards-carousel mt-12">
+        <ol className={singleRow ? 'mt-12 grid grid-cols-6 gap-3' : 'cards-carousel mt-12'}>
           {steps.map((s, i) => (
             <Reveal key={s.title} delay={i * 60} as="li" className="relative h-full">
-              <div className="flex h-full flex-col rounded-md border border-border bg-bg p-5">
+              <div className={`flex h-full flex-col rounded-md border border-border bg-bg ${singleRow ? 'p-4' : 'p-5'}`}>
                 <div className="flex items-center gap-2">
-                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-gradient-brand text-sm font-black text-white">
+                  <span className={`flex items-center justify-center rounded-full bg-gradient-brand font-black text-white ${singleRow ? 'h-7 w-7 text-xs' : 'h-8 w-8 text-sm'}`}>
                     {i + 1}
                   </span>
                   {i < steps.length - 1 && <span className="h-px flex-1 bg-border" aria-hidden="true" />}
                 </div>
-                <h3 className="mt-4 font-bold text-bright">{s.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted">{s.description}</p>
+                <h3 className={`mt-3 font-bold text-bright ${singleRow ? 'text-sm' : ''}`}>{s.title}</h3>
+                <p className={`mt-1.5 leading-relaxed text-muted ${singleRow ? 'text-xs' : 'text-sm'}`}>{s.description}</p>
               </div>
             </Reveal>
           ))}

@@ -58,6 +58,7 @@ export default function CruciblePage() {
         sub={product.hero.sub}
         primaryCta={{ label: 'Request a demo', href: '/request-demo' }}
         secondaryCta={{ label: 'Talk to an expert', href: '/contact' }}
+        tertiaryCta={{ label: 'Release Note V1.0', href: 'https://product-templates-v1-0.netlify.app/synth-ai/' }}
       />
 
       {/* Pillar badge strip */}
@@ -92,6 +93,7 @@ export default function CruciblePage() {
           heading={product.workflow.heading}
           intro={product.workflow.intro}
           steps={product.workflow.steps}
+          singleRow
         />
       )}
 
@@ -114,7 +116,7 @@ export default function CruciblePage() {
             align="center"
             className="mb-12"
           />
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-5">
             {integrationCategories.map((cat, i) => (
               <Reveal key={cat.label} delay={(i % 3) * 60}>
                 <div className="rounded-lg border border-border bg-surface/70 p-5 text-center transition-all duration-200 hover:border-secondary/40 hover:bg-surface-2">

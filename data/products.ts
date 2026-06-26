@@ -300,8 +300,8 @@ export const products: ProductContent[] = [
   {
     slug: 'synthai',
     name: 'SynthAI',
-    eyebrow: 'SYNTHAI · CONVERSATIONAL ANALYTICS CO-PILOT',
-    positioning: 'Conversational analytics co-pilot',
+    eyebrow: 'SYNTHAI · CONVERSATIONAL ANALYTICS AGENT',
+    positioning: 'Conversational analytics agent',
     hero: {
       headline: 'Ask a question in plain English. Get a trusted, evidence-backed answer  - ',
       headlineEmphasis: 'in seconds.',
@@ -336,7 +336,6 @@ export const products: ProductContent[] = [
         { icon: 'fileCheck', title: 'Structured, auditable responses', description: 'Every answer ships with evidence cards, a confidence badge, explicit reasoning, recommendations, severity and the exact SQL  -  which means reproducibility is built in.' },
         { icon: 'gitBranch', title: 'Auto-Follow investigation', description: 'Autonomously pursues the logical next questions to a depth of five levels, which means analyst-grade depth at automation speed.' },
         { icon: 'network', title: 'Task & entity graphs', description: 'Investigations render as live graphs of every question, query and flagged entity, which means you can pivot to an entity deep-dive without losing the thread.' },
-        { icon: 'lock', title: 'Tenant isolation by construction', description: 'Every lookup and model call is scoped by tenant; keys are sealed in Vault  -  which means cross-tenant access is architecturally impossible.' },
         { icon: 'gauge', title: 'LLM governance & cost ledger', description: 'Real-time token and USD cost tracking across Anthropic, OpenAI, Bedrock and Ollama, which means AI spend is visible before the bill arrives.' },
       ],
     },
@@ -372,7 +371,7 @@ export const products: ProductContent[] = [
     ],
     related: ['datafabric', 'bloo-vantage', 'crucible'],
     meta: {
-      title: 'SynthAI | Conversational Security Analytics Co-Pilot',
+      title: 'SynthAI | Conversational Security Analytics Agent',
       description: 'SynthAI turns plain-English questions into validated, evidence-backed investigations  -  a deterministic 5-stage pipeline with full auditability.',
       keyword: 'AI security analytics copilot',
     },

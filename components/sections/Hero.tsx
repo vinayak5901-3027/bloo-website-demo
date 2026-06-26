@@ -49,6 +49,7 @@ export function Hero({
   sub,
   primaryCta,
   secondaryCta,
+  tertiaryCta,
   children,
 }: {
   eyebrow: string;
@@ -57,6 +58,7 @@ export function Hero({
   sub: string;
   primaryCta?: Cta;
   secondaryCta?: Cta;
+  tertiaryCta?: Cta;
   /** Optional right-column visual. */
   children?: React.ReactNode;
 }) {
@@ -79,6 +81,11 @@ export function Hero({
                 {secondaryCta && (
                   <Button href={secondaryCta.href} variant="ghost" size="md" className="lg:px-7 lg:py-3.5 lg:text-base">
                     {secondaryCta.label}
+                  </Button>
+                )}
+                {tertiaryCta && (
+                  <Button href={tertiaryCta.href} variant="ghost" size="md" className="lg:px-7 lg:py-3.5 lg:text-base border-secondary/40 text-secondary hover:bg-secondary/10">
+                    {tertiaryCta.label}
                   </Button>
                 )}
               </div>
