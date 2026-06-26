@@ -116,7 +116,6 @@ export const primaryNav: NavGroup[] = [
       { label: 'Case studies', href: '/case-studies', description: 'Measurable results from security teams running Bloo.' },
       { label: 'Documentation', href: '/docs', description: 'Deploy, connect and operate the Bloo platform.' },
       { label: 'Integrations', href: '/integrations', description: '1,200+ connectors across the security stack.' },
-      { label: 'Release Notes', href: '/resources/release-note-version0-1', description: 'What shipped in Bloo 1.0  -  Crucible, SynthAI and platform.' },
     ],
   },
   {
@@ -167,7 +166,6 @@ export const footerNav: { title: string; links: NavItem[] }[] = [
       { label: 'Documentation', href: '/docs' },
       { label: 'Integrations', href: '/integrations' },
       { label: 'Support', href: '/support' },
-      { label: 'Release Notes', href: '/release-notes' },
       { label: 'Pricing', href: '/pricing' },
     ],
   },
