@@ -60,7 +60,7 @@ export const leadership: Leader[] = [
     name: 'Kuldeep Raina',
     role: 'Chief Revenue Officer',
     focus: 'Growth & strategic alliances',
-    photo: '/images/kuldeep.png',
+    photo: '/images/kuldeep.jpeg',
     linkedin: 'https://www.linkedin.com/in/kuldeep-raina',
     bio: "Kuldeep brings 28 years of cybersecurity leadership across India, APAC, and MEA, having driven revenue and partnerships at McAfee, Cisco, Symantec, Sophos, Gigamon, and Seqrite. At Bloo, he leads global go-to-market strategy, enterprise growth, and the strategic alliances that position Bloo's AI-driven SecOps platform at the forefront of telemetry intelligence.",
   },
