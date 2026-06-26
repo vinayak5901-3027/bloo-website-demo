@@ -58,7 +58,7 @@ export default function CruciblePage() {
         sub={product.hero.sub}
         primaryCta={{ label: 'Request a demo', href: '/request-demo' }}
         secondaryCta={{ label: 'Talk to an expert', href: '/contact' }}
-        tertiaryCta={{ label: 'Release Note V1.0', href: 'https://product-templates-v1-0.netlify.app/synth-ai/' }}
+        tertiaryCta={{ label: 'Release Note V1.0', href: '/release-notes/crucible' }}
       />
 
       {/* Pillar badge strip */}
